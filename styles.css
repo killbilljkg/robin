@@ -196,7 +196,7 @@ body {
 
 .couple-names .amp {
   display: block;
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Allura', cursive;
   font-style: normal;
   font-size: 0.9em;
   color: var(--rose);
@@ -327,7 +327,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Allura', cursive;
   font-size: 68px;
   color: var(--gold-dark);
   font-weight: 400;
@@ -413,7 +413,7 @@ body {
 }
 
 .ampersand-large {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Allura', cursive;
   font-size: 100px;
   color: var(--rose);
   line-height: 1;
@@ -613,7 +613,7 @@ body {
 }
 
 .amp-small {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Allura', cursive;
   color: var(--rose);
   font-size: 28px;
 }
