@@ -52,10 +52,8 @@ body {
 }
 
 .nav-brand {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 26px;
+  font-family: 'Allura', cursive;
+  font-size: 36px;
   color: var(--gold-dark);
   text-decoration: none;
   letter-spacing: 2px;
@@ -184,23 +182,19 @@ body {
 }
 
 .couple-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(48px, 8vw, 84px);
+  font-family: 'Allura', cursive;
+  font-size: clamp(60px, 10vw, 110px);
   color: var(--gold-dark);
-  line-height: 1.15;
-  font-weight: 500;
-  letter-spacing: 1px;
+  line-height: 1.1;
+  font-weight: 400;
   margin: 10px 0;
 }
 
 .couple-names .amp {
   display: block;
-  font-family: 'Allura', cursive;
-  font-style: normal;
-  font-size: 0.9em;
+  font-size: 0.55em;
   color: var(--rose);
-  margin: -4px 0;
+  margin: -10px 0;
 }
 
 .couple-names .name {
@@ -381,10 +375,8 @@ body {
 }
 
 .person-initial {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 88px;
+  font-family: 'Allura', cursive;
+  font-size: 96px;
   color: var(--gold-dark);
   line-height: 1;
 }
@@ -744,11 +736,8 @@ body {
 }
 
 .footer-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 500;
-  font-size: 38px;
-  letter-spacing: 1px;
+  font-family: 'Allura', cursive;
+  font-size: 50px;
   color: var(--gold-dark);
   margin-bottom: 20px;
 }
