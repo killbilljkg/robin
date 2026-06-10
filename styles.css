@@ -507,6 +507,14 @@ body {
   font-size: 30px;
   margin-bottom: 14px;
   color: var(--gold-dark);
+  line-height: 1;
+}
+
+.detail-icon svg {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .detail-label {
