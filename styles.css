@@ -702,6 +702,23 @@ body {
   font-family: 'Cormorant Garamond', serif;
 }
 
+.rsvp-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rsvp-status {
+  margin-top: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  min-height: 20px;
+  text-align: center;
+}
+
+.rsvp-status.sending { color: rgba(255, 255, 255, 0.75); }
+.rsvp-status.success { color: #c9e7c9; }
+.rsvp-status.error   { color: #f3b6b6; }
+
 .rsvp-form .btn-primary {
   margin-top: 10px;
   align-self: center;

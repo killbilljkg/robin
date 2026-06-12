@@ -63,32 +63,45 @@ document.querySelectorAll('section').forEach((s) => {
   observer.observe(s);
 });
 
-// RSVP form — client-side acknowledgement.
-// Wire this up to a Google Form / Formspree / your own endpoint when ready.
-function submitRSVP(e) {
+const RSVP_ENDPOINT = 'https://sheetdb.io/api/v1/d3etfidhvnoh4';
+
+async function submitRSVP(e) {
   e.preventDefault();
   const form = e.target;
-  const name = form.name.value.trim();
-  const event = form.event.value;
-  const wa = '919876543210'; // <-- replace with the family contact WhatsApp number
+  const status = document.getElementById('rsvp-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
 
-  const eventLabel = {
-    engagement: 'the Betrothal on June 20',
-    wedding: 'the Wedding on July 16',
-    both: 'both the Betrothal and Wedding'
-  }[event] || 'the celebration';
+  const payload = {
+    firstName: form.firstName.value.trim(),
+    lastName: form.lastName.value.trim(),
+    email: form.email.value.trim(),
+    attendance: form.attendance.value,
+    invitationType: form.invitationType.value,
+    group: form.group.value,
+    message: form.message.value.trim(),
+    timestamp: new Date().toISOString()
+  };
 
-  const msg =
-    `Hello! I'm ${name}.%0A` +
-    `I'd love to attend ${eventLabel}.%0A` +
-    `Guests: ${form.guests.value}%0A` +
-    `Phone: ${form.phone.value}` +
-    (form.message.value ? `%0AMessage: ${encodeURIComponent(form.message.value)}` : '');
+  submitBtn.disabled = true;
+  status.textContent = 'Sending your blessing…';
+  status.className = 'rsvp-status sending';
 
-  // Open WhatsApp prefilled with the RSVP details
-  window.open(`https://wa.me/${wa}?text=${msg}`, '_blank');
+  try {
+    const res = await fetch(RSVP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: payload })
+    });
+    if (!res.ok) throw new Error('Request failed');
+    status.textContent = `Thank you, ${payload.firstName}! Your blessing has been received. 🤍`;
+    status.className = 'rsvp-status success';
+    form.reset();
+  } catch (err) {
+    status.textContent = 'Something went wrong — please try again or reach us directly.';
+    status.className = 'rsvp-status error';
+  } finally {
+    submitBtn.disabled = false;
+  }
 
-  alert(`Thank you, ${name}! Your blessing has been received. 🤍`);
-  form.reset();
   return false;
 }
