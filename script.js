@@ -73,9 +73,9 @@ function submitRSVP(e) {
   const wa = '919876543210'; // <-- replace with the family contact WhatsApp number
 
   const eventLabel = {
-    engagement: 'the Engagement on June 20',
+    engagement: 'the Betrothal on June 20',
     wedding: 'the Wedding on July 16',
-    both: 'both the Engagement and Wedding'
+    both: 'both the Betrothal and Wedding'
   }[event] || 'the celebration';
 
   const msg =
