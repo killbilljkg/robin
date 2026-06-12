@@ -707,17 +707,39 @@ body {
   cursor: not-allowed;
 }
 
-.rsvp-status {
-  margin-top: 18px;
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  transform: translate(-50%, 24px);
+  max-width: min(420px, calc(100vw - 32px));
+  padding: 14px 22px;
+  border-radius: 10px;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
-  min-height: 20px;
+  line-height: 1.45;
+  color: #fff;
+  background: #2b2b2b;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  transition: opacity 280ms ease, transform 280ms ease;
+  z-index: 9999;
   text-align: center;
+  pointer-events: none;
 }
 
-.rsvp-status.sending { color: rgba(255, 255, 255, 0.75); }
-.rsvp-status.success { color: #c9e7c9; }
-.rsvp-status.error   { color: #f3b6b6; }
+.toast-show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #4a7c4a 0%, #3d6a3d 100%);
+}
+
+.toast-error {
+  background: linear-gradient(135deg, #a14b4b 0%, #8a3c3c 100%);
+}
 
 .rsvp-form .btn-primary {
   margin-top: 10px;

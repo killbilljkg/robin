@@ -65,26 +65,39 @@ document.querySelectorAll('section').forEach((s) => {
 
 const RSVP_ENDPOINT = 'https://sheetdb.io/api/v1/d3etfidhvnoh4';
 
+function showToast(message, type = 'success') {
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => toast.classList.add('toast-show'));
+  setTimeout(() => {
+    toast.classList.remove('toast-show');
+    setTimeout(() => toast.remove(), 350);
+  }, 4500);
+}
+
 async function submitRSVP(e) {
   e.preventDefault();
   const form = e.target;
-  const status = document.getElementById('rsvp-status');
   const submitBtn = form.querySelector('button[type="submit"]');
+  const fd = new FormData(form);
+  const get = (k) => (fd.get(k) || '').toString().trim();
 
   const payload = {
-    firstName: form.firstName.value.trim(),
-    lastName: form.lastName.value.trim(),
-    email: form.email.value.trim(),
-    attendance: form.attendance.value,
-    invitationType: form.invitationType.value,
-    group: form.group.value,
-    message: form.message.value.trim(),
+    firstName: get('firstName'),
+    lastName: get('lastName'),
+    email: get('email'),
+    attendance: get('attendance'),
+    invitationType: get('invitationType'),
+    group: get('group'),
+    message: get('message'),
     timestamp: new Date().toISOString()
   };
 
   submitBtn.disabled = true;
-  status.textContent = 'Sending your blessing…';
-  status.className = 'rsvp-status sending';
+  const originalLabel = submitBtn.innerHTML;
+  submitBtn.innerHTML = 'Sending…';
 
   try {
     const res = await fetch(RSVP_ENDPOINT, {
@@ -93,14 +106,13 @@ async function submitRSVP(e) {
       body: JSON.stringify({ data: payload })
     });
     if (!res.ok) throw new Error('Request failed');
-    status.textContent = `Thank you, ${payload.firstName}! Your blessing has been received. 🤍`;
-    status.className = 'rsvp-status success';
+    showToast(`Thank you, ${payload.firstName}! Your blessing has been received 🤍`, 'success');
     form.reset();
   } catch (err) {
-    status.textContent = 'Something went wrong — please try again or reach us directly.';
-    status.className = 'rsvp-status error';
+    showToast('Something went wrong — please try again or reach us directly.', 'error');
   } finally {
     submitBtn.disabled = false;
+    submitBtn.innerHTML = originalLabel;
   }
 
   return false;
