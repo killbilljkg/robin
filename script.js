@@ -63,6 +63,27 @@ document.querySelectorAll('section').forEach((s) => {
   observer.observe(s);
 });
 
+// Gallery lightbox
+document.querySelectorAll('.gallery-track img').forEach((img) => {
+  img.addEventListener('click', () => openLightbox(img.src));
+});
+
+function openLightbox(src) {
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.innerHTML = `<button class="lightbox-close" aria-label="Close">&times;</button><img src="${src}" alt="" />`;
+  const close = () => {
+    overlay.classList.remove('lightbox-show');
+    setTimeout(() => overlay.remove(), 220);
+    document.removeEventListener('keydown', onKey);
+  };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', onKey);
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('lightbox-show'));
+}
+
 const RSVP_ENDPOINT = 'https://sheetdb.io/api/v1/d3etfidhvnoh4';
 
 function showToast(message, type = 'success') {
