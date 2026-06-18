@@ -601,8 +601,11 @@ html, body { overflow-x: hidden; }
   animation-play-state: paused;
 }
 
+.gallery-track {
+  align-items: center;
+}
+
 .gallery-track img {
-  height: 220px;
   width: auto;
   flex-shrink: 0;
   border-radius: 8px;
@@ -612,6 +615,9 @@ html, body { overflow-x: hidden; }
   user-select: none;
   -webkit-user-drag: none;
 }
+
+.gallery-track img:nth-child(odd)  { height: 260px; }
+.gallery-track img:nth-child(even) { height: 200px; }
 
 .gallery-track img:hover {
   transform: translateY(-3px) scale(1.02);
@@ -629,7 +635,8 @@ html, body { overflow-x: hidden; }
 }
 
 @media (max-width: 768px) {
-  .gallery-track img { height: 170px; }
+  .gallery-track img:nth-child(odd)  { height: 200px; }
+  .gallery-track img:nth-child(even) { height: 150px; }
   .gallery-track { gap: 12px; animation-duration: 50s; }
 }
 
