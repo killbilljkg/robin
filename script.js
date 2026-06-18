@@ -6,45 +6,45 @@ function pad(n) {
 }
 
 function updateCountdown() {
-  const now = Date.now();
-  const diff = WEDDING_DATE - now;
+  const d = document.getElementById('days');
+  if (!d) return;
+  const h = document.getElementById('hours');
+  const m = document.getElementById('minutes');
+  const s = document.getElementById('seconds');
+  const diff = WEDDING_DATE - Date.now();
 
   if (diff <= 0) {
-    document.getElementById('days').textContent = '00';
-    document.getElementById('hours').textContent = '00';
-    document.getElementById('minutes').textContent = '00';
-    document.getElementById('seconds').textContent = '00';
+    d.textContent = h.textContent = m.textContent = s.textContent = '00';
     return;
   }
 
-  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((diff / (1000 * 60)) % 60);
-  const seconds = Math.floor((diff / 1000) % 60);
-
-  document.getElementById('days').textContent = pad(days);
-  document.getElementById('hours').textContent = pad(hours);
-  document.getElementById('minutes').textContent = pad(minutes);
-  document.getElementById('seconds').textContent = pad(seconds);
+  d.textContent = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+  h.textContent = pad(Math.floor((diff / (1000 * 60 * 60)) % 24));
+  m.textContent = pad(Math.floor((diff / (1000 * 60)) % 60));
+  s.textContent = pad(Math.floor((diff / 1000) % 60));
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+if (document.getElementById('days')) {
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
 
 // Mobile nav toggle
 const toggle = document.querySelector('.nav-toggle');
 const links = document.querySelector('.nav-links');
-toggle.addEventListener('click', () => {
-  const isOpen = links.classList.toggle('open');
-  toggle.setAttribute('aria-expanded', isOpen);
-});
-
-document.querySelectorAll('.nav-links a').forEach((a) => {
-  a.addEventListener('click', () => {
-    links.classList.remove('open');
-    toggle.setAttribute('aria-expanded', 'false');
+if (toggle && links) {
+  toggle.addEventListener('click', () => {
+    const isOpen = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', isOpen);
   });
-});
+
+  document.querySelectorAll('.nav-links a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
 
 // Smooth fade-in on scroll
 const observer = new IntersectionObserver(
@@ -63,8 +63,8 @@ document.querySelectorAll('section').forEach((s) => {
   observer.observe(s);
 });
 
-// Gallery lightbox
-document.querySelectorAll('.gallery-track img').forEach((img) => {
+// Gallery lightbox (carousel on home + grid on gallery page)
+document.querySelectorAll('.gallery-track img, .gallery-grid img').forEach((img) => {
   img.addEventListener('click', () => openLightbox(img.src));
 });
 
