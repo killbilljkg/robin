@@ -400,8 +400,11 @@ body {
 
 .person-desc {
   color: var(--muted);
-  font-size: 17px;
-  line-height: 1.7;
+  font-size: 16px;
+  line-height: 1.75;
+  text-align: justify;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .ampersand-large {
