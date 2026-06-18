@@ -1,0 +1,21 @@
+# Robin Jose & Ann Mariya Shaji — Wedding
+
+> Wedding invitation website for the marriage of Robin Jose and Ann Mariya Shaji, taking place in Kerala, India in 2026. The site shares ceremony details, family information, a save-the-date photo gallery, and an RSVP form.
+
+## Couple
+- **Groom:** Robin Jose — eldest son of Mr. Jose Jacob and Mrs. Mercy Thomas (Choorapoikail House, Kara, Chittarikkal P.O, Kasaragod District, Kerala — 671326). Engineer based in Bengaluru.
+- **Bride:** Ann Mariya Shaji — eldest daughter of Mr. Shaji Mathew and Mrs. Litty Shaji (Muttassery House, Kundamthadam, Cherupuzha P.O, Kannur District, Kerala). Physiotherapist.
+
+## Events
+- **Betrothal Ceremony** — June 20, 2026 (Saturday) at 11:00 AM, St. George's Church, Kerala.
+- **Wedding Ceremony** — July 16, 2026 (Thursday) at 10:30 AM, St. Thomas Forane Church, Thomapuram, Kerala.
+
+## Pages
+- [Home](https://robinwedsannmariya.story-labs.in/): Hero invitation, countdown, couple bios, save-the-date carousel, ceremony details, families, RSVP form.
+- [Gallery](https://robinwedsannmariya.story-labs.in/gallery.html): Full grid of 27 save-the-date portraits.
+
+## RSVP
+RSVPs are collected via a form on the home page that writes to a Google Sheet via SheetDB. Fields: first name, last name, email, attendance (Yes/No/Maybe), ceremony (Betrothal/Wedding/Both), connection (Bride's Side / Groom's Side / Family / Friend / Colleague), and an optional message.
+
+## Tradition
+The wedding follows the Syro-Malabar Catholic tradition of Kerala. The home page opens with Song of Solomon 3:4 — "I have found the one whom my soul loves."
